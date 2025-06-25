@@ -1,0 +1,198 @@
+/**
+ * Scout theme for reveal.js
+ * Built by Scout - scout.new
+ */
+
+// Default mixins and settings -----------------
+@use "sass:color";
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+// Self-hosted Open Runde Sans
+@font-face {
+	font-family: 'Open Runde Sans';
+	src: url('/fonts/openrunde/OpenRunde-Regular.woff2') format('woff2');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Open Runde Sans';
+	src: url('/fonts/openrunde/OpenRunde-Medium.woff2') format('woff2');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Open Runde Sans';
+	src: url('/fonts/openrunde/OpenRunde-Semibold.woff2') format('woff2');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Open Runde Sans';
+	src: url('/fonts/openrunde/OpenRunde-Bold.woff2') format('woff2');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+// Scout colors from the vite template
+$scoutBackground: #ffffff;
+$scoutForeground: #0f0f0f;
+$scoutPrimary: #3B82F6; // Bright blue accent (tailwind blue-500)
+$scoutPrimaryLight: #60A5FA; // Lighter blue for hovers (tailwind blue-400)
+$scoutMuted: #6b7280; // Neutral gray for subtle text
+$scoutBorder: #E5E7EB; // Light gray borders (tailwind gray-200)
+
+// Dark mode colors
+$scoutDarkBackground: #0f172a; // Navy gray-900
+$scoutDarkForeground: #f8fafc; // Gray-50
+$scoutDarkBorder: rgba(255, 255, 255, 0.1);
+
+// Override theme settings
+$backgroundColor: $scoutBackground;
+
+$mainColor: $scoutForeground;
+$headingColor: $scoutForeground;
+
+$mainFontSize: 38px;
+$mainFont: 'Open Runde Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+$headingFont: 'Playfair Display', 'Open Runde Sans', Georgia, serif;
+$headingTextShadow: none;
+$headingLetterSpacing: -0.02em;
+$headingTextTransform: none;
+$headingFontWeight: 700;
+$linkColor: $scoutPrimary;
+$linkColorHover: $scoutPrimaryLight;
+$selectionBackgroundColor: rgba($scoutPrimary, 0.3);
+
+$heading1Size: 3em;
+$heading2Size: 2.2em;
+$heading3Size: 1.7em;
+$heading4Size: 1.2em;
+
+// Code blocks
+$codeFont: 'IBM Plex Mono', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;
+
+// Override background
+@mixin bodyBackground() {
+	background: $backgroundColor;
+	background: linear-gradient(to bottom, $backgroundColor 0%, color.scale($backgroundColor, $lightness: -2%) 100%);
+}
+
+// Change text colors against dark slide backgrounds
+@include dark-bg-text-color($scoutDarkForeground);
+
+// Custom Scout styles
+.reveal {
+	// Scout gradient for special text
+	.scout-gradient {
+		background: linear-gradient(135deg, $scoutPrimary 0%, $scoutPrimaryLight 50%, $scoutPrimary 100%);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-clip: text;
+		display: inline-block;
+	}
+
+	// Scout badge style
+	.scout-badge {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		padding: 0.5em 1em;
+		border-radius: 9999px;
+		border: 1px solid rgba($scoutPrimary, 0.2);
+		background: rgba($scoutPrimary, 0.1);
+		backdrop-filter: blur(8px);
+		font-size: 0.75em;
+		color: $scoutPrimary;
+		font-weight: 500;
+	}
+
+	// Better code blocks
+	pre {
+		box-shadow: none;
+		border: 1px solid $scoutBorder;
+		border-radius: 0.75rem;
+		
+		code {
+			border-radius: 0.75rem;
+			padding: 1em;
+		}
+	}
+
+	// Scout button styles
+	.scout-button {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5em;
+		padding: 0.75em 1.5em;
+		background: $scoutPrimary;
+		color: white;
+		border-radius: 0.75rem;
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.2s ease;
+		
+		&:hover {
+			background: $scoutPrimaryLight;
+			transform: translateY(-2px);
+			box-shadow: 0 4px 12px rgba($scoutPrimary, 0.3);
+		}
+		
+		&.outline {
+			background: transparent;
+			border: 2px solid $scoutPrimary;
+			color: $scoutPrimary;
+			
+			&:hover {
+				background: rgba($scoutPrimary, 0.1);
+			}
+		}
+	}
+
+	// Improved progress bar
+	.progress {
+		height: 3px;
+		background: rgba($scoutPrimary, 0.2);
+		
+		span {
+			background: $scoutPrimary;
+		}
+	}
+
+	// Controls styling
+	.controls {
+		color: $scoutPrimary;
+	}
+}
+
+// Dark mode support
+@media (prefers-color-scheme: dark) {
+	.reveal {
+		$backgroundColor: $scoutDarkBackground;
+		$mainColor: $scoutDarkForeground;
+		$headingColor: $scoutDarkForeground;
+		
+		.scout-badge {
+			border-color: rgba($scoutPrimaryLight, 0.3);
+			background: rgba($scoutPrimary, 0.15);
+			color: $scoutPrimaryLight;
+		}
+		
+		pre {
+			border-color: $scoutDarkBorder;
+		}
+	}
+}
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
