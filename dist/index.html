@@ -12,6 +12,10 @@
 
 		<!-- Theme used for syntax highlighted code -->
 
+		<!-- Chart plugin -->
+		<script src="https://cdn.jsdelivr.net/npm/reveal.js-plugins@latest/chart/plugin.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.0/chart.min.js"></script>
+
 		<!-- PDF export settings -->
 		<script>
 			var link = document.createElement( 'link' );
@@ -20,7 +24,7 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? '/css/print/pdf.css' : '/css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
-		<script type="module" crossorigin src="./assets/main-C0RaMS6I.js"></script>
+		<script type="module" crossorigin src="./assets/main-B6EDOgWC.js"></script>
 		<link rel="stylesheet" crossorigin href="./assets/main-CoIPZiBM.css">
 	</head>
 	<body>
@@ -370,6 +374,148 @@
 							</tr>
 						</tbody>
 					</table>
+				</section>
+
+				<section>
+					<section>
+						<h2>Interactive Charts</h2>
+						<p>Create beautiful charts with Chart.js</p>
+						<canvas data-chart="line" style="max-height: 400px;">
+						<!--
+						{
+						 "data": {
+						  "labels": ["January","February","March","April","May","June","July"],
+						  "datasets":[
+						   {
+						    "data":[65,59,80,81,56,55,40],
+						    "label":"Sales 2023","backgroundColor":"rgba(93,93,214,.2)","borderColor":"rgba(93,93,214,1)"
+						   },
+						   {
+						    "data":[28,48,40,19,86,27,90],
+						    "label":"Sales 2022","backgroundColor":"rgba(220,120,120,.2)","borderColor":"rgba(220,120,120,1)"
+						   }
+						  ]
+						 },
+						 "options": {
+						  "responsive": true,
+						  "plugins": {
+						   "title": {
+						    "display": true,
+						    "text": "Monthly Sales Comparison"
+						   }
+						  }
+						 }
+						}
+						-->
+						</canvas>
+					</section>
+					<section>
+						<h2>Bar Charts</h2>
+						<canvas data-chart="bar" style="max-height: 400px;">
+						<!--
+						{
+						 "data": {
+						  "labels": ["Q1","Q2","Q3","Q4"],
+						  "datasets":[
+						   {
+						    "data":[120,180,150,200],
+						    "label":"Product A","backgroundColor":"rgba(93,93,214,.8)"
+						   },
+						   {
+						    "data":[90,120,140,180],
+						    "label":"Product B","backgroundColor":"rgba(123,123,230,.8)"
+						   },
+						   {
+						    "data":[60,80,100,120],
+						    "label":"Product C","backgroundColor":"rgba(153,153,246,.8)"
+						   }
+						  ]
+						 },
+						 "options": {
+						  "responsive": true,
+						  "plugins": {
+						   "title": {
+						    "display": true,
+						    "text": "Quarterly Revenue by Product"
+						   }
+						  }
+						 }
+						}
+						-->
+						</canvas>
+					</section>
+					<section>
+						<h2>Pie & Doughnut Charts</h2>
+						<div class="r-hstack">
+							<div style="width: 45%;">
+								<canvas data-chart="pie">
+								<!--
+								{
+								 "data": {
+								  "labels": ["Red","Blue","Yellow","Green","Purple"],
+								  "datasets":[{
+								   "data":[300,50,100,40,120],
+								   "backgroundColor": ["#ff6384","#36a2eb","#ffce56","#4bc0c0","#9966ff"]
+								  }]
+								 }
+								}
+								-->
+								</canvas>
+							</div>
+							<div style="width: 45%;">
+								<canvas data-chart="doughnut">
+								<!--
+								{
+								 "data": {
+								  "labels": ["Desktop","Mobile","Tablet"],
+								  "datasets":[{
+								   "data":[60,30,10],
+								   "backgroundColor": ["#5B5BD6","#7B7BE6","#9B9BF6"]
+								  }]
+								 }
+								}
+								-->
+								</canvas>
+							</div>
+						</div>
+					</section>
+					<section>
+						<h2>CSV Data Charts</h2>
+						<p>You can also use comma-separated values</p>
+						<canvas data-chart="line" style="max-height: 350px;">
+						Month, January, February, March, April, May, June
+						Temperature, 5, 7, 12, 17, 22, 25
+						Rainfall, 95, 80, 60, 40, 25, 15
+						<!--
+						{
+						 "data": {
+						  "datasets": [
+						   {"label": "Temperature (°C)", "borderColor": "#ff6384", "yAxisID": "y"},
+						   {"label": "Rainfall (mm)", "borderColor": "#36a2eb", "yAxisID": "y1"}
+						  ]
+						 },
+						 "options": {
+						  "responsive": true,
+						  "scales": {
+						   "y": {
+						    "type": "linear",
+						    "display": true,
+						    "position": "left"
+						   },
+						   "y1": {
+						    "type": "linear",
+						    "display": true,
+						    "position": "right",
+						    "grid": {
+						     "drawOnChartArea": false
+						    }
+						   }
+						  }
+						 }
+						}
+						-->
+						</canvas>
+					</section>
 				</section>
 
 				<section>

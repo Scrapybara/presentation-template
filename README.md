@@ -129,6 +129,8 @@ The following plugins are included and enabled:
 - **Notes**: Speaker notes view (`RevealNotes`)
 - **Search**: Search within slides (`RevealSearch`)
 - **Zoom**: Alt+click to zoom (`RevealZoom`)
+- **Chart**: Interactive charts with Chart.js (`RevealChart`)
+  - Supported chart types: `line`, `bar`, `pie`, `doughnut`, `radar`, `polarArea`, `bubble`, `scatter`
 
 ## Build and Deploy
 
